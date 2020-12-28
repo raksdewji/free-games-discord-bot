@@ -1,0 +1,33 @@
+{
+  "name": "free-games-discord-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "cross-env NODE_ENV=development nodemon bot.js",
+    "lint": "eslint --fix --ext .js ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raksdewji/free-games-discord-bot.git"
+  },
+  "author": "Rakheem Dewji",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raksdewji/free-games-discord-bot/issues"
+  },
+  "homepage": "https://github.com/raksdewji/free-games-discord-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-only-warn": "^1.0.2",
+    "eslint-plugin-promise": "^4.2.1"
+  }
+}
