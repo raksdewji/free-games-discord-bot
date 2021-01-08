@@ -29,11 +29,11 @@ client.on('message', function (msg, err) {
 
   // Send free games when users types !user
   if (msg.content === '!free') {
-    fetchFreeGames();
+    fetchFreeGames(msg.channel.id);
   }
 });
 
-async function fetchFreeGames() {
+const fetchFreeGames = async (channel) => {
   await redditFetch({
     subreddit: 'GameDeals',
     type: 'hot',
@@ -51,7 +51,7 @@ async function fetchFreeGames() {
       return console.log('Could not find any posts to fetch from that subreddit! Try another one!');
     }
 
-    const channel = client.channels.cache.get('791793487318220808');
+    const clientChannel = client.channels.cache.get(channel);
 
     for (let i = 0; i < 20; i++) {
       if (post[i].data.title.includes('free') ||
@@ -67,7 +67,7 @@ async function fetchFreeGames() {
         if (post[i]?.data?.thumbnail !== 'spoiler' && post[i]?.data?.thumbnail !== 'default') {
           embedMsg.setImage(`${post[i]?.data?.thumbnail}`);
         }
-        channel.send(embedMsg);
+        clientChannel.send(embedMsg);
       }
     }
   }).catch((err) => {
