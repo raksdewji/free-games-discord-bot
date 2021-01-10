@@ -112,7 +112,7 @@ const getCurrentGames = async (channel) => {
             post[i].data.title.includes('100%')) {
         console.log(post[i].data);
 
-        let title = post[i]?.data?.title;
+        let title = post[i].data.title;
         if (title.length > 256) {
           title = title.substring(0, 256);
         }
