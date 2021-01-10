@@ -27,6 +27,7 @@ client.on('message', function (msg, err) {
   if (msg.content === 'fgAdd') {
     channelsList.push(msg.channel.id);
     msg.channel.send('Free game alerts will now be sent to this channel.');
+    console.log('Added:', msg.channel.id);
   }
 
   // Removes the channel to list of channels which free games are sent
@@ -36,6 +37,7 @@ client.on('message', function (msg, err) {
       channelsList.splice(i, 1);
     }
     msg.channel.send('No longer receiving free game alerts here.');
+    console.log('Removed:', msg.channel.id);
   }
 
   // Send free games when users types sendFreeGames
