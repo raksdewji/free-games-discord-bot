@@ -118,24 +118,24 @@ const getCurrentGames = async (channel) => {
         }
 
         let thumbnail;
-        if (post[i]?.data?.thumbnail !== 'spoiler' && post[i]?.data?.thumbnail !== 'default') {
-          thumbnail = post[i]?.data?.thumbnail;
+        if (post[i].data.thumbnail !== 'spoiler' && post[i].data.thumbnail !== 'default') {
+          thumbnail = post[i].data.thumbnail;
         }
 
         const embedMsg = new Discord.MessageEmbed()
           .setColor('#0099ff')
           .setTitle(title)
-          .setURL(`https://www.reddit.com${post[i]?.data?.permalink}`)
-          .setDescription(`Free game here: ${post[i]?.data?.url}`)
+          .setURL(`https://www.reddit.com${post[i].data.permalink}`)
+          .setDescription(`Free game here: ${post[i].data.url}`)
           .setAuthor('Free Games Bot',
             'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
             'https://github.com/raksdewji/free-games-discord-bot')
           .setImage(thumbnail);
 
-        console.log('Sent game: ', `${post[i]?.data?.permalink}${clientChannel}`);
+        console.log('Sent game: ', `${post[i].data.permalink}${clientChannel}`);
 
-        if (sentGames.indexOf(`${post[i]?.data?.permalink}${clientChannel}`) === -1) {
-          sentGames.push(`${post[i]?.data?.permalink}${clientChannel}`);
+        if (sentGames.indexOf(`${post[i].data.permalink}${clientChannel}`) === -1) {
+          sentGames.push(`${post[i].data.permalink}${clientChannel}`);
           clientChannel.send(embedMsg);
         }
       }
