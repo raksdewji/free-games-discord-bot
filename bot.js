@@ -120,8 +120,12 @@ const getCurrentGames = async (channel) => {
         }
 
         let thumbnail;
-        if (post[i].data.thumbnail !== 'spoiler' && post[i].data.thumbnail !== 'default') {
-          thumbnail = post[i].data.thumbnail;
+        if (post[i].data.thumbnail !== 'spoiler') {
+          if (post[i].data.thumbnail === 'default') {
+            thumbnail = 'https://www.reddit.com/static/noimage.png';
+          } else {
+            thumbnail = post[i].data.thumbnail;
+          }
         }
 
         const embedMsg = new Discord.MessageEmbed()
