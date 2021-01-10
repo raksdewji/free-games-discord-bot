@@ -112,7 +112,6 @@ const getCurrentGames = async (channel) => {
       if (post[i].data.title.includes('free') ||
             post[i].data.title.includes('Free') ||
             post[i].data.title.includes('100%')) {
-        console.log(post[i].data);
 
         let title = post[i].data.title;
         if (title.length > 256) {
