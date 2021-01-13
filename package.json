@@ -22,10 +22,10 @@
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "node-fetch": "^2.6.1",
-    "sqlite": "^4.0.19",
-    "sqlite3": "5.0.0"
+    "pg": "^8.5.1"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^7.16.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
@@ -41,6 +41,6 @@
     }
   },
   "lint-staged": {
-    "*.{.js,.ts}": "yarn lint"
+    "/src/*.{.js,.ts}": "yarn lint"
   }
 }
