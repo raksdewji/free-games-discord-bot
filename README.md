@@ -15,13 +15,13 @@
 ## Install
 
 ```sh
-npm install
+yarn install
 ```
 
 ## Usage
 
 ```sh
-npm start
+yarn start
 ```
 
 ## Author

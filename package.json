@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node bot.js",
-    "dev": "cross-env NODE_ENV=development nodemon bot.js",
+    "start": "node ./src/bot.js",
+    "dev": "cross-env NODE_ENV=development node ./src/bot.js",
     "lint": "eslint --fix --ext .js ."
   },
   "repository": {
@@ -21,7 +21,9 @@
   "dependencies": {
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "sqlite": "^4.0.19",
+    "sqlite3": "5.0.0"
   },
   "devDependencies": {
     "eslint": "^7.16.0",
@@ -30,11 +32,15 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-only-warn": "^1.0.2",
     "eslint-plugin-promise": "^4.2.1",
-    "husky": "^4.3.6"
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{.js,.ts}": "yarn lint"
   }
 }
