@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const nodeFetch = require('node-fetch');
+const { SQL } = require('./sql');
 
 require('dotenv').config();
 
@@ -107,7 +108,7 @@ const getCurrentGames = async (channel) => {
 
     post = body.data.children;
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 60; i++) {
       if (post[i].data.title.includes('free') ||
           post[i].data.title.includes('Free') ||
           post[i].data.title.includes('100%')) {
@@ -160,3 +161,5 @@ setInterval(function () {
     console.log('cleaned array');
   }
 }, 1800000);
+
+// Add channel to Postgres DB
