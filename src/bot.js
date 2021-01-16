@@ -26,11 +26,13 @@ client.on('message', function (msg, err) {
   // Add the channel to list of channels which free games are sent
   if (msg.content === 'fgAdd') {
     addChannel(msg.channel.id);
+    msg.channel.send('Free game alerts will now be sent to this channel.');
   }
 
   // Removes the channel to list of channels which free games are sent
   if (msg.content === 'fgRemove') {
     removeChannel(msg.channel.id);
+    msg.channel.send('No longer receiving free game alerts here.');
   }
 
   // Send free games when users types sendFreeGames, won't send duplicates
