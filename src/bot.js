@@ -87,6 +87,10 @@ function helpInfo (channelID) {
       {
         name: 'Free Games Bot Info',
         value: `Currently in ${client.guilds.cache.size} servers`
+      },
+      {
+        name: 'Add Free Games Bot to another server',
+        value: '[Invite Link](https://discord.com/oauth2/authorize?client_id=791791586731884606&scope=bot)'
       }
     )
     .setAuthor('Free Games Bot',
