@@ -8,15 +8,12 @@ const config = {
   database: process.env.DB,
   password: process.env.DB_password,
   host: process.env.DB_host,
+  ssl: { rejectUnauthorized: false },
   port: 5432,
   poolSize: 5,
   poolIdleTimeout: 30000,
   reapIntervalMillis: 10000
 };
-
-if (process.env.NODE_ENV === 'development') {
-  config.ssl = { rejectUnauthorized: false };
-}
 
 const pool = new pg.Pool(config);
 

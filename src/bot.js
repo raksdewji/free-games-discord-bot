@@ -7,7 +7,6 @@ require('dotenv').config();
 const client = new Discord.Client();
 client.login(process.env.bot_token);
 
-const channelsList = [];
 const sentGames = [];
 
 client.on('ready', function (err, token) {
@@ -26,19 +25,12 @@ client.on('message', function (msg, err) {
 
   // Add the channel to list of channels which free games are sent
   if (msg.content === 'fgAdd') {
-    channelsList.push(msg.channel.id);
-    msg.channel.send('Free game alerts will now be sent to this channel.');
-    console.log('Added:', msg.channel.id);
+    addChannel(msg.channel.id);
   }
 
   // Removes the channel to list of channels which free games are sent
   if (msg.content === 'fgRemove') {
-    const i = channelsList.indexOf(msg.channel.id);
-    if (i !== -1) {
-      channelsList.splice(i, 1);
-    }
-    msg.channel.send('No longer receiving free game alerts here.');
-    console.log('Removed:', msg.channel.id);
+    removeChannel(msg.channel.id);
   }
 
   // Send free games when users types sendFreeGames, won't send duplicates
@@ -50,14 +42,23 @@ client.on('message', function (msg, err) {
     helpInfo(msg.channel.id);
   }
 
+  // Check if current channel is receiving free games
   if (msg.content === 'fgActive') {
-    if (channelsList.indexOf(msg.channel.id) !== -1) {
-      msg.channel.send('Currently receiving free game alerts here');
-    } else {
-      msg.channel.send('Not receiving free game alerts here');
-    }
+    checkActive(msg.channel.id);
   }
 });
+
+// Check if given channel is getting updates
+const checkActive = async (channelID) => {
+  const rows = await checkActiveChannel(channelID);
+  const clientChannel = client.channels.cache.get(channelID);
+
+  if (rows.length > 0) {
+    clientChannel.send('Currently receiving free game alerts here');
+  } else {
+    clientChannel.send('Not receiving free game alerts here');
+  }
+};
 
 function helpInfo (channelID) {
   const clientChannel = client.channels.cache.get(channelID);
@@ -159,9 +160,11 @@ const getCurrentGames = async (channel, post) => {
 
 const fetchGames = async () => {
   const posts = await fetchPosts();
+  const channels = await getActiveChannels();
+
   if (posts !== 'invalid' && posts !== null) {
-    channelsList.forEach(async function (channel) {
-      getCurrentGames(channel, posts);
+    channels.forEach(async function (channel) {
+      getCurrentGames(channel.channel_id, posts);
     });
   }
 };
@@ -176,3 +179,65 @@ setInterval(function () {
     console.log('cleaned array');
   }
 }, 3600000);
+
+// Add channel to Postgres DB
+const addChannel = async (channelID) => {
+  const channel = channelID;
+  const query = `INSERT INTO public.channels VALUES (${channel});`;
+
+  try {
+    const { rows } = await SQL(query);
+    console.log(`Added: ${channel} to DB`);
+    return rows;
+  } catch (err) {
+    console.log(err);
+    return `Failed to add channel ${err.message}`;
+  }
+};
+
+// Remove channel from DB
+const removeChannel = async (channelID) => {
+  const channel = channelID;
+  const query = `DELETE FROM public.channels WHERE "channel_id"='${channel}';`;
+
+  try {
+    const { rows } = await SQL(query);
+    console.log(`Removed: ${channel} to DB`);
+    return rows;
+  } catch (err) {
+    console.log(err);
+    return `Failed to remove channel ${err.message}`;
+  }
+};
+
+// Given a channel id, checks the DB to see if the id exits
+const checkActiveChannel = async (channelID) => {
+  const channel = channelID;
+  const query = `SELECT * FROM public.channels WHERE "channel_id"='${channel}';`;
+
+  try {
+    const { rows } = await SQL(query);
+    if (rows.length > 0) {
+      return rows;
+    } else {
+      return rows;
+    }
+  } catch (err) {
+    console.log(err);
+    return `Failed to check if channel is active ${err.message}`;
+  }
+};
+
+// Get all channels that are receiving game updates
+const getActiveChannels = async () => {
+  const query = 'SELECT channel_id FROM public.channels;';
+
+  try {
+    const { rows } = await SQL(query);
+    console.log(rows);
+    return rows;
+  } catch (err) {
+    console.log(err);
+    return `Failed to get channel_id rows ${err.message}`;
+  }
+};
