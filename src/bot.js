@@ -67,11 +67,11 @@ function helpInfo (channelID) {
 
   const embedMsg = new Discord.MessageEmbed()
     .setColor('#0099ff')
-    .setTitle('Commands')
+    .setDescription('Simple bot that fetches free games from /r/GameDeals')
     .addFields(
       {
         name: 'fgAdd',
-        value: 'Receive free game alerts to current channel',
+        value: 'Receive free game alerts to this channel',
         inline: true
       },
       {
@@ -83,10 +83,14 @@ function helpInfo (channelID) {
         name: 'fgActive',
         value: 'Check if current channel is receiving free game alerts',
         inline: true
+      },
+      {
+        name: 'Free Games Bot Info',
+        value: `Currently in ${client.guilds.cache.size} servers`
       }
     )
     .setAuthor('Free Games Bot',
-      'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+      'https://raw.githubusercontent.com/raksdewji/free-games-discord-bot/master/assets/bot%20icon.png',
       'https://github.com/raksdewji/free-games-discord-bot');
 
   clientChannel.send(embedMsg);
