@@ -154,7 +154,7 @@ const getCurrentGames = async (channel, post) => {
           .setURL(`https://www.reddit.com${post[i].data.permalink}`)
           .setDescription(`Free game here: ${post[i].data.url}`)
           .setAuthor('Free Games Bot',
-            'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+            'https://raw.githubusercontent.com/raksdewji/free-games-discord-bot/master/assets/bot%20icon.png',
             'https://github.com/raksdewji/free-games-discord-bot')
           .setImage(thumbnail);
 
