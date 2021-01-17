@@ -131,7 +131,7 @@ const getCurrentGames = async (channel, post) => {
   const clientChannel = client.channels.cache.get(channel);
   post = post.data.children;
 
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < 50; i++) {
     if (post[i].data.title.includes('free') ||
           post[i].data.title.includes('Free') ||
           post[i].data.title.includes('100%')) {
