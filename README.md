@@ -1,7 +1,8 @@
 <h1 align="center">Welcome to Free Games Discord Bot 👋</h1>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/raksdewji/free-games-discord-bot/master/assets/bot%20icon.png" />
+  <img src="https://raw.githubusercontent.com/raksdewji/free-games-discord-bot/master/assets/bot%20icon.png" 
+  alt="icon" width="200px" height="200px"/>
 </p>
 
 <p>
