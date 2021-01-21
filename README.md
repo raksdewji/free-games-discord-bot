@@ -1,4 +1,9 @@
 <h1 align="center">Welcome to Free Games Discord Bot 👋</h1>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/raksdewji/free-games-discord-bot/master/assets/bot%20icon.png" />
+</p>
+
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/raksdewji/free-games-discord-bot#readme" target="_blank">
@@ -6,11 +11,10 @@
   </a>
 </p>
 
-> Simple Discord bot that uses Reddit api to check /r/GameDeals for new free games
+> Simple Discord bot that uses Reddit api to check /r/GameDeals for new free games posted.
 
 ### 🏠 [Homepage](https://github.com/raksdewji/free-games-discord-bot#readme)
-
-### ✨ [Add bot to your Discord Server](https://discord.com/oauth2/authorize?client_id=791791586731884606&scope=bot)
+### ✨ [Add Bot to your Discord Server](https://discord.com/oauth2/authorize?client_id=791791586731884606&scope=bot)
 
 ## Install
 
@@ -42,7 +46,7 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2021 [Rakheem Dewji](https://github.com/raksdewji).<br />
-This project is [BSD](https://github.com/raksdewji/free-games-discord-bot/blob/master/LICENSE) licensed.
+This project is [BSD-3](https://github.com/raksdewji/free-games-discord-bot/blob/master/LICENSE) licensed.
 
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
