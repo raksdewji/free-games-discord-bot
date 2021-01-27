@@ -15,8 +15,7 @@ client.on('ready', function (err, token) {
   }
   console.log('Bot online');
 
-  // client.user.setActivity('fgHelp', { type: 'LISTENING' });
-  client.user.setActivity('dev env', { type: 'LISTENING' });
+  client.user.setActivity('fgHelp', { type: 'LISTENING' });
 });
 
 client.on('message', function (msg, err) {
