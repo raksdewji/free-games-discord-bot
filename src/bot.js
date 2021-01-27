@@ -15,7 +15,8 @@ client.on('ready', function (err, token) {
   }
   console.log('Bot online');
 
-  client.user.setActivity('fgHelp', { type: 'LISTENING' });
+  // client.user.setActivity('fgHelp', { type: 'LISTENING' });
+  client.user.setActivity('dev env', { type: 'LISTENING' });
 });
 
 client.on('message', function (msg, err) {
@@ -67,7 +68,7 @@ function helpInfo (channelID) {
 
   const embedMsg = new Discord.MessageEmbed()
     .setColor('#0099ff')
-    .setDescription('Simple bot that fetches free games from /r/GameDeals')
+    .setDescription('Simple bot that fetches free games submitted to /r/GameDeals')
     .addFields(
       {
         name: 'fgAdd',
@@ -86,7 +87,8 @@ function helpInfo (channelID) {
       },
       {
         name: 'Free Games Bot Info',
-        value: `Currently in ${client.guilds.cache.size} servers`
+        value: `Currently in ${client.guilds.cache.size} servers.
+                Have any issues or feature requests? Check out the [Github Repo](https://github.com/raksdewji/free-games-discord-bot#readme) `
       },
       {
         name: 'Add Free Games Bot to another server',
@@ -135,7 +137,7 @@ const getCurrentGames = async (channel, post) => {
     if (post[i].data.title.includes('free') ||
           post[i].data.title.includes('Free') ||
           post[i].data.title.includes('100%')) {
-      if (post[i].data.ups > 200 && post[i].data.thumbnail !== 'spoiler') { // posts with > 200 scores and not expired
+      if (post[i].data.ups > 300 && post[i].data.thumbnail !== 'spoiler') { // posts with > 300 scores and not expired
         let title = post[i].data.title;
         if (title.length > 256) {
           title = title.substring(0, 256);
