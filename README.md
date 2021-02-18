@@ -20,21 +20,21 @@
 
 📍 Get information about the bot and commands in the discord channel.  
 ```sh
-!fgHelp
+fgHelp
 ```
 📍 Sign up for free game alerts to the channel where command is sent. 
 ```sh 
-!fgAdd
+fgAdd
 ```
 
 📍 Remove free game alerts to the channel where command is sent. 
 ```sh
-!fgRemove
+fgRemove
 ```
 
 📍 Check if current channel is receiving game alerts. 
 ```sh
-!fgActive
+fgActive
 ```
 
 ## Install
