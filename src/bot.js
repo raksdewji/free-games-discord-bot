@@ -132,11 +132,11 @@ const getCurrentGames = async (channel, post) => {
   const clientChannel = client.channels.cache.get(channel);
   post = post.data.children;
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 25; i++) {
     if (post[i].data.title.includes('free') ||
           post[i].data.title.includes('Free') ||
           post[i].data.title.includes('100%')) {
-      if (post[i].data.ups > 300 && post[i].data.thumbnail !== 'spoiler') { // posts with > 300 scores and not expired
+      if (post[i].data.ups > 200 && post[i].data.thumbnail !== 'spoiler') { // posts with > 200 scores and not expired
         let title = post[i].data.title;
         if (title.length > 256) {
           title = title.substring(0, 256);
